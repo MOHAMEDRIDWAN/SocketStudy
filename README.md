@@ -56,36 +56,39 @@ Socket programming finds applications in various domains, including web developm
 ## CLIENT:
 ```
 import socket
-from datetime import datetime
 s=socket.socket()
-s.bind(('localhost',8002))
+s.bind(('localhost',8000))
 s.listen(5)
 c,addr=s.accept()
-print("Client Address : ",addr)
-now = datetime.now()
-c.send(now.strftime("Date: %d/%m/%Y and Time: %H:%M:%S").encode())
-ack=c.recv(1024).decode()
-if ack:
-print(ack)
-c.close()
+while True:
+    i= input('enter a data : ')
+    c.send(i.encode())
+    ack=c.recv(1024).decode()
+    if ack:
+        print(ack)
+        continue
+    else:
+        c.close()
+        break
 ```
 ## SERVER:
 ```
 import socket
 s=socket.socket()
-s.connect(('localhost',8002))
-print(s.getsockname())
-print(s.recv(1024).decode())
-s.send("acknowledgement recived from the server".encode())
+s.connect(('localhost',8000))
+while True:
+    print(s.recv(1024).decode())
+    s.send('Acknowledgement recieved'.encode())
 ```
 
 ## OUTPUT:
 ## CLIENT:
 
-![Screenshot 2024-04-19 121019](https://github.com/23002027/SocketStudy/assets/139752981/0250e927-3dc1-47d9-848a-566b3d46e925)
+<img width="959" alt="image" src="https://github.com/MOHAMEDRIDWAN/SocketStudy/assets/146993368/45c78c70-9bb2-40aa-b31c-81789879d964">
+
 
 ## SERVER:
-![image](https://github.com/23002027/SocketStudy/assets/139752981/d926fd17-597c-4321-bc65-21b2e7f1a512)
+<img width="959" alt="image" src="https://github.com/MOHAMEDRIDWAN/SocketStudy/assets/146993368/ee4984f4-e92d-4a1d-a274-e176841a818c">
 
 ## Result:
 Thus the study of Socket Programming Completed Successfully
