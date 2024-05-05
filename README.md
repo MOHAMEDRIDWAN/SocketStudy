@@ -1,4 +1,6 @@
 # Ex.No:1a  			Study of Socket Programming
+# NAME : MOHAMED RIDWAN
+# REG NO : 212223110030
 
 ## Aim: 
 To perform a study on Socket Programming
